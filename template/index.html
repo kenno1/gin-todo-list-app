@@ -8,9 +8,18 @@
 <body>
     <h1>TODO LIST</h1>
     <ul>
-        <li>shopping at marche</li>
-        <li>wash a car</li>
-        <li>read books</li>
+        {{range .todo}}
+            <li>
+                {{.CreatedAtString}}
+                {{.CreatedBy}}
+                {{.Content}}
+                {{if eq .Status 0}}
+                    Not yet.
+                {{else}}
+                    Completed!
+                {{end}}
+            </li>
+        {{end}}
     </ul>
 </body>
 </html>
