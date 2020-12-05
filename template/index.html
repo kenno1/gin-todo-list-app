@@ -3,23 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <style type="text/css" media="screen">
+        @import url("/template/style.css");
+    </style>
+    <title>Todo List</title>
 </head>
 <body>
-    <h1>TODO LIST</h1>
-    <ul>
-        {{range .todo}}
+    <div class="container">
+        <h1 class="mb-4">Todo List</h1>
+        <form action="/create">
+            Todo:<input type="text" name="content" placeholder="What things you have todo?">
+            Person:<input type="text" name="createdBy" placeholder="Input Person's Name">
+            <input type="submit" value="create">
+        </form>
+        <ul>
+            {{range .todo}}
             <li>
-                {{.CreatedAtString}}
-                {{.CreatedBy}}
-                {{.Content}}
-                {{if eq .Status 0}}
-                    Not yet.
-                {{else}}
-                    Completed!
-                {{end}}
+                <form action="/done">
+                    <input type="hidden" name="id" value="{{.ID}}">
+                    <input type="hidden" name="status" value="{{.Status}}">
+                    {{.CreatedAtString}}
+                    {{.CreatedBy}}
+                    {{.Content}}
+                    {{if eq .Status 0}}
+                        Not yet.
+                        <input type="submit" value="Done">
+                    {{else}}
+                        Completed!
+                        <input type="submit" value="Return">
+                    {{end}}
+                </form>
             </li>
-        {{end}}
-    </ul>
+            {{end}}
+        </ul>
+    </div>
 </body>
 </html>

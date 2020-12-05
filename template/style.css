@@ -1,0 +1,14 @@
+body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-style: italic;
+    color: aliceblue;
+    background: #4d639f;
+}
+
+input[type=text],
+input[type=text]:focus {
+    color: #9abca4;
+    border: none;
+    background: rgba(0, 0, 0, 0.2);
+    width: 300px;
+}
